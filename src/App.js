@@ -20,13 +20,12 @@ function App() {
   return (
     <div className=" text-white">
       <Context.Provider value={{movies,page,detail,search,setSearch,setDetail,setPage,setMovies}}>
-        <Navbar />
         <Routes>
-          <Route path='/' element={<><Home /> <Page/> </>} />
-          <Route path='/trending' element={<><Trending /> <Page/> </>} />
-          <Route path='/upcoming' element={<><Upcoming/> <Page/></>}/>
-          <Route path='/search' element={<><Search/> <Page/></>} />
-          <Route path='/saved' element={<Saved/>} />
+          <Route path='/' element={<><Navbar /> <Home /> <Page/> </>} />
+          <Route path='/trending' element={<><Navbar /> <Trending /> <Page/> </>} />
+          <Route path='/upcoming' element={<><Navbar /> <Upcoming/> <Page/></>}/>
+          <Route path='/search' element={<><Navbar /> <Search/> <Page/></>} />
+          <Route path='/saved' element={<><Navbar /> <Saved/></>} />
           <Route path='/detail' element={<Detail/>} />
         </Routes>
       </Context.Provider>

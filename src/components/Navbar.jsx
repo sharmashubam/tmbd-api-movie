@@ -13,16 +13,19 @@ import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 const Navbar = () => {
     const history = useNavigate();
     const { setPage, search, setSearch } = useContext(Context)
-    const pageHandler = () => {
-        setPage(1);
-        setSearch(se)
-    }
+   
     const [se, setSe] = useState('');
     const [nav, setNav] = useState(false)
 
     const handleNav = () => {
         setNav(!nav);
     };
+
+    const pageHandler = () => {
+        setPage(1);
+        setSearch(se)
+        setNav(!nav)
+    }
 
     const handleKeyPress = (event) => {
         if (event.key == "Enter") {
@@ -35,7 +38,7 @@ const Navbar = () => {
         }
     };
     return (
-        <div className="flex justify-between items-center h-[70px] md:h-[80px] mx-auto px-4 z-50 text-white shadow-lg bg-[#232121]">
+        <div className="flex justify-between items-center h-[70px] shadow-2xl rounded-2xl md:h-[80px] mx-auto px-4 z-50 text-white fixed top-0 w-full  bg-[#232121]">
             <Link to='/' className="text-2xl font-bold xl:ml-32 xl:px-2 md:ml-4 ml-4 text-[#00df9a]">getMovie</Link>
 
             <div className="z-50 hidden xl:flex items-center">
@@ -58,13 +61,13 @@ const Navbar = () => {
             </div>
 
 
-            <div onClick={handleNav} className='block  xl:hidden cursor-pointer z-30'>
+            <div onClick={handleNav} className='block  xl:hidden cursor-pointer z-50'>
                 {nav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
             </div>
 
             <div className={nav
-                ? 'xl:hidden fixed left-0 top-0  shadow-2xl rounded-2xl z-20 flex flex-col items-center justify-between w-full h-fit bg-[#232121] ease-in-out duration-500 ' :
-                'fixed left-[-100%] top-0 h-fit justify-between flex flex-col items-center ease-in-out duration-500'} >
+                ? 'xl:hidden fixed left-0 top-0  shadow-2xl rounded-2xl z-40 flex flex-col items-center justify-between w-full h-fit bg-[#232121] ease-in-out duration-500 ' :
+                'fixed left-[-100%] top-0 h-fit justify-between shadow-2xl rounded-2xl z-40 flex flex-col items-center w-full bg-[#232121] ease-in-out duration-500'} >
 
                 <h1 className="p-4 md:mt-2 w-full text-center rounded-2xl border border-[#2d2d2d] shadow-2xl text-2xl font-bold text-teal-500 sm:px-6 lg:px-8 bg-red-500-500">
                     Let's getMovies
@@ -83,7 +86,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex flex-col items-start w-full my-4">
-                    <input onChange={(e) => { setSe(e.target.value) }} onKeyDown={handleKeyPress} className="appearance-none px-4 border-teal-500 border w-[80%] md:w-[50%] mx-auto py-3 rounded-2xl shadow-2xl bg-transparent  text-gray-200 leading-tight focus:outline-none" type="text" placeholder="Search movies" />
+                    <input onChange={(e) => { setSe(e.target.value) }} onKeyDown={handleKeyPress} className="appearance-none text-center border-teal-500 border w-[80%] md:w-[50%] mx-auto py-3 rounded-2xl shadow-2xl bg-transparent  text-gray-200 leading-tight focus:outline-none" type="text" placeholder="Search movies" />
                     <Link to='/search' onClick={pageHandler} className=" mx-auto m-4 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm  border-4 text-white py-1 px-6 rounded" type="button">
                         Search
                     </Link>
