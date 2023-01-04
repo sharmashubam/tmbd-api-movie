@@ -11,15 +11,23 @@ import Upcoming from './components/Upcoming';
 import Search from './components/Search';
 import Saved from './components/Saved';
 
+import {Helmet} from "react-helmet";
+
 function App() {
   const [movies, setMovies] = useState([])
   const [page,setPage]= useState(1);
   const [detail,setDetail]= useState(null);
   const[search,setSearch]= useState('');
+  const [saved,setSaved] = useState([]);
 
   return (
     <div className=" text-white">
-      <Context.Provider value={{movies,page,detail,search,setSearch,setDetail,setPage,setMovies}}>
+      <Context.Provider value={{movies,page,detail,search,saved,setSaved,setSearch,setDetail,setPage,setMovies}}>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>getMovies | Search Movies and Watch Trailers | Shubam Sharma</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
         <Routes>
           <Route path='/' element={<><Navbar /> <Home /> <Page/> </>} />
           <Route path='/trending' element={<><Navbar /> <Trending /> <Page/> </>} />

@@ -39,13 +39,13 @@ const Navbar = () => {
     };
     return (
         <div className="flex justify-between items-center h-[70px] shadow-2xl rounded-2xl md:h-[80px] mx-auto px-4 z-50 text-white fixed top-0 w-full  bg-[#232121]">
-            <Link to='/' className="text-2xl font-bold xl:ml-32 xl:px-2 md:ml-4 ml-4 text-[#00df9a]">getMovie</Link>
+            <Link to='/' onClick={()=>{setPage(1)}} className="text-2xl font-bold xl:ml-32 xl:px-2 md:ml-4 ml-4 text-[#00df9a]">getMovie</Link>
 
             <div className="z-50 hidden xl:flex items-center">
                 <Link to='/' onClick={pageHandler} className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer">Home</Link>
                 <Link to='/upcoming' onClick={pageHandler} className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer">Upcoming</Link>
-                <Link to='/trending' onClick={pageHandler} className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer">Trending</Link>
-                <Link to='/saved' className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer">Saved</Link>
+                <Link to='/trending' onClick={pageHandler} className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer w-fit">Playing</Link>
+                <Link to='/saved' className="px-4 py-1 font-semibold rounded-md hover:text-teal-500 cursor-pointer">Bookmarks</Link>
 
                 <div className="flex items-center border-b-2 border-teal-500 py-2 mx-2 md:w-[35%] xl:w-[100%] w-[100%]">
                     <input onChange={(e) => { setSe(e.target.value) }} onKeyDown={handleKeyPress} className="appearance-none bg-transparent border-none  text-gray-200 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Search movies" />

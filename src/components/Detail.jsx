@@ -21,7 +21,7 @@ const Detail = () => {
 
     const api = 'cd044f6d93442c21362eeb8daf590a27'
 
-    const { detail } = useContext(Context)
+    const { detail, setSaved, saved } = useContext(Context)
     const { pathname } = useLocation();
     var summary = '';
     const [show, setShow] = useState('Show Less')
@@ -33,7 +33,7 @@ const Detail = () => {
     const review_url = `https://api.themoviedb.org/3/movie/${detail?.id}/reviews?api_key=${api}`;
     const [loader, setLoader] = useState(true)
     const [imgLoader, setImgLoader] = useState(true);
-
+    const [book, setBook] = useState([])
     const opts = {
         height: '390',
         width: '640',
@@ -112,9 +112,6 @@ const Detail = () => {
 
 
 
-    const bookmarkHandler = () => {
-        console.log(detail)
-    }
     return (
         <>{loader ? <Load /> :
             <>
@@ -124,8 +121,8 @@ const Detail = () => {
                         <div className='mx-3 xl:ml-12'>
                             <div className='md:h-auto xl:w-[80%] mt-2 rounded-lg overflow-hidden w-auto relative h-[400px]'>
                                 <img
-                                
-                                    className='h-full w-full object-cover brightness-50 hover:brightness-75 transition-all ease-in-out duration-500'
+
+                                    className='h-full w-full object-cover brightness-75 hover:brightness-50 transition-all ease-in-out duration-500'
                                     src={detail.backdrop_path ? `https://image.tmdb.org/t/p/original/${detail?.backdrop_path}` : 'https://imgs.search.brave.com/A_PbIOfM-hxkSoGkZ0XISKfHbXv0EKrNkNL8fkVkll4/rs:fit:1150:647:1/g:ce/aHR0cHM6Ly93d3cu/c2Fsb25sZmMuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE4/LzAxL2ltYWdlLW5v/dC1mb3VuZC0xLXNj/YWxlZC0xMTUweDY0/Ny5wbmc'}
                                     alt={detail?.title}
                                     effect='blur'
@@ -157,7 +154,7 @@ const Detail = () => {
                                             <BsPlayFill size={20} />
                                             <p>Play</p>
                                         </div>
-                                        <button onClick={bookmarkHandler} className='md:text-xl  border-2 border-teal-500 px-3 py-2 cursor-pointer bg-teal-700 transition duration-500 ease-in-out transform hover:scale-105'>
+                                        <button className='md:text-xl  border-2 border-teal-500 px-3 py-2 cursor-pointer bg-teal-700 transition duration-500 ease-in-out transform hover:scale-105'>
                                             Watch Later
                                         </button>
                                     </div>
@@ -221,7 +218,7 @@ const Detail = () => {
                                     </button>
 
                                 </div>
-                            
+
 
                             </div>
                             <div>
@@ -229,15 +226,15 @@ const Detail = () => {
                                     <>
                                         <h1 className='text-teal-500 text-4xl font-family-sans py-[40px] md:py-12 font-bold '>reviews</h1>
 
-                                        <div class="shadow-xl bg-[#313131] rounded-lg xl:mr-32">
-                                            <h2 class="text-2xl font-bold text-white mb-4 px-4">Top reviews</h2>
+                                        <div className="shadow-xl bg-[#313131] rounded-lg xl:mr-32">
+                                            <h2 className="text-2xl font-bold text-white mb-4 px-4">Top reviews</h2>
                                             <ul className='flex gap-2 flex-col '>
                                                 {
                                                     review.results?.map(function (sol) {
                                                         return (
                                                             <li key={sol.id} class="shadow-lg rounded-md py-4 px-4">
-                                                                <h3 class="text-xl font-bold text-gray-200 mb-2">Great product!</h3>
-                                                                <p class="text-white" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(sol?.content ? sol?.content.slice(0, 300) + '...' : 'No reviews'), }} />
+                                                                <h3 className="text-xl font-bold text-gray-200 mb-2">Great product!</h3>
+                                                                <p className="text-white" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(sol?.content ? sol?.content.slice(0, 300) + '...' : 'No reviews'), }} />
                                                             </li>
                                                         )
                                                     })

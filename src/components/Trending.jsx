@@ -12,7 +12,8 @@ const Trending = () => {
     const[loader,setLoader]= useState(true)
     const { movies,setMovies,page,setDetail} = useContext(Context)
     const key= 'cd044f6d93442c21362eeb8daf590a27'
-    const requestPopular= `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=${page}`;
+    const requestPopular= `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`;
+    //  https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=en-US&page=1
      
     useEffect(() => {
         axios.get(requestPopular).then((response) => {
