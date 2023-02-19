@@ -4,8 +4,8 @@ const Load = () => {
     return (
         <div className=' h-screen w-screen flex justify-center items-center'>
             <Circles
-                height="80"
-                width="80"
+                height="70"
+                width="70"
                 color="#4fa94d"
                 ariaLabel="circles-loading"
                 wrapperStyle={{}}
